@@ -2,17 +2,28 @@
 
 ############################################################
 
-# Script Name     :   Clock
+# Script Name     :   now
 # Description     :   Date and time
-# Args            :   none
+# Args            :   none - day of the week and time
+#                     -d   - month
 # Author          :   Jellu Cat
 
 ############################################################
 
-CLOCK=$(date "+%a, %H:%M")
+time=$(date "+%a, %H:%M")
+now="${time}"
+
+while getopts 'd' OPTION; do
+    case "$OPTION" in
+        d)
+            day=$(date "+%d/%m")
+            now="${day} — ${time}"
+        ;;
+    esac
+done
 
 ############
 # Printing #
 ############
 
-echo "$CLOCK"
+echo "${now}"
