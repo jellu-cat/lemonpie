@@ -1,0 +1,29 @@
+#!/bin/sh
+
+############################################################
+
+# Script Name     :   now
+# Description     :   Date and time
+# Args            :   none - day of the week and time
+#                     -d   - month
+# Author          :   Jellu Cat
+
+############################################################
+
+time=$(date "+%a, %H:%M")
+now="${time}"
+
+while getopts 'd' OPTION; do
+    case "$OPTION" in
+        d)
+            day=$(date "+%d/%m")
+            now="${day} — ${time}"
+        ;;
+    esac
+done
+
+############
+# Printing #
+############
+
+echo "${now}"

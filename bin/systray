@@ -1,0 +1,19 @@
+#!/bin/sh
+
+############################################################
+
+# Script Name     :   systray
+# Description     :   system tray for lemonpie
+# Args            :   none
+# Author          :   Jellu Cat
+
+############################################################
+
+
+
+############
+# Printing #
+############
+
+# Print the caret icon with FontAwesome and the code
+echo -e -n "\uf0d7"
