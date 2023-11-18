@@ -1,20 +1,12 @@
-#!/usr/bin/bash
+#!/bin/sh
 
-SEP="|"
-
-ActiveWindow(){
-    len=$(echo -n "$(xdotool getwindowfocus getwindowname)" | wc -m)
-    max_len=70
-    if [ "$len" -gt "$max_len" ];then
-        echo -n "$(xdotool getwindowfocus getwindowname | cut -c 1-$max_len)..."
-    else
-        echo -n "$(xdotool getwindowfocus getwindowname)"
-    fi
+bar() {
+    lemonbar -p \
+        -g 1366x22+0+0 \
+        -F#151515 \
+        -B#F2F2E9 \
+        -f "Iosevka Nerd Font"-12 \
+        -f FontAwesome-11
 }
 
-while true; do
-    echo -e "%{l}  $(desktop) $SEP $(cpu) $SEP $(memory)" \
-        "%{c}$(ActiveWindow)" \
-        "%{r}$(battery) $SEP $(volume) $SEP $(now -d) $SEP $(systray) "
-    sleep 0.1s
-done
+( bash status | bar ) &
